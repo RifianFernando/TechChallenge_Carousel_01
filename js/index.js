@@ -14,6 +14,19 @@ const SIZE = img[0].clientWidth;
 
 carousel.style.transform = 'translateX(' + (-SIZE * count) + 'px)';
 
+//for (let i = 0; i < count; i--) {
+// setTimeout(function(){
+//     next.click();
+//     console.log('next');
+// }, 1000)
+
+var loop_click = setTimeout(mycode, 5000);
+function mycode() {
+    next.click();
+  loop_click = setTimeout(mycode, 5000); // repeat gambar
+}
+
+
 next.addEventListener('click', () => {
     if(count >= img.length - 1) return;
     carousel.style.transition = "transform 0.4s ease-in-out";
@@ -29,6 +42,31 @@ prev.addEventListener('click', () => {
 });
 
 carousel.addEventListener('transitionend', () => {
+    radio1.onclick = function() {
+        count = 4;
+        console.log("radio1");
+        next.click();
+    };
+    radio2.onclick = function() {
+        count = 0;
+        console.log("radio2");
+        next.click();
+    };
+    radio3.onclick = function() {
+        count = 1;
+        console.log("radio3");
+        next.click();
+    };
+    radio4.onclick = function() {
+        count = 2;
+        console.log("radio4");
+        next.click();
+    };
+    radio5.onclick = function() {
+        count = 3;
+        console.log("radio5");
+        next.click();
+    };
     console.log(count);
     if(img[count].id === 'lastSlide'){
         carousel.style.transition = "none";
